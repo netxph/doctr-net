@@ -9,7 +9,8 @@ namespace Doctr.Diagnostics
         public static string Dump(this object @object)
         {
             
-            return JsonSerializer.Serialize(@object);
+            return JsonSerializer.Serialize(@object, 
+                new JsonSerializerOptions() { WriteIndented = true });
 
         }
 

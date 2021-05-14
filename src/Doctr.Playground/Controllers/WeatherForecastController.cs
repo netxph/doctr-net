@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using Doctr.Diagnostics;
 
 namespace Doctr.Playground.Controllers
 {
@@ -29,13 +30,18 @@ namespace Doctr.Playground.Controllers
             Trace.WriteLine("WeatherForecast - GET");
 
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+
+            var forecast =  Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+
+            Trace.WriteLine(forecast.Dump());
+
+            return forecast;
         }
     }
 }
