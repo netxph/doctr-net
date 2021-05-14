@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace Doctr.Playground.Controllers
 {
@@ -26,6 +26,8 @@ namespace Doctr.Playground.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            Trace.WriteLine("WeatherForecast - GET");
+
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
