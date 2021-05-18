@@ -41,6 +41,10 @@ namespace Doctr.Playground.Controllers
 
             Trace.WriteLine(forecast.Dump());
 
+            var item = forecast.FirstOrDefault();
+            Trace.WriteLine(item.Internal("_summary"));
+
+
             return forecast;
         }
     }
