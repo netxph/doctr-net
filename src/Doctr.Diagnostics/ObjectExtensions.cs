@@ -16,7 +16,14 @@ namespace Doctr.Diagnostics
 
         }
 
-        public static string Internal(this object @object, string name)
+        public static string Dump(this object @object, string name)
+        {
+            return ObjectExtensions.Dump(
+                ObjectExtensions.Internal(
+                    @object, name));
+        }
+
+        public static object Internal(this object @object, string name)
         {
             var objectType = @object.GetType();
             var member = objectType.GetField(name, 
@@ -24,21 +31,24 @@ namespace Doctr.Diagnostics
                 objectType.GetProperty(name,
                     BindingFlags.NonPublic | BindingFlags.Instance) as MemberInfo;
 
-            Trace.WriteLine(member == null);
-
             if(member != null) 
             {
                 if(member.MemberType == MemberTypes.Field)
                 {
-                    return ObjectExtensions.Dump(((FieldInfo)member).GetValue(@object));
+                    return ((FieldInfo)member).GetValue(@object);
                 }
                 else if(member.MemberType == MemberTypes.Property)
                 {
-                    return ObjectExtensions.Dump(((PropertyInfo)member).GetValue(@object));
+                    return ((PropertyInfo)member).GetValue(@object);
                 }
             }
 
             return null;
+        }
+
+        public static T Internal<T>(this object @object, string name)
+        {
+            return (T)ObjectExtensions.Internal(@object, name);
         }
 
     }
