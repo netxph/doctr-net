@@ -33,4 +33,4 @@ jobs:
           PROJECT_FILE_PATH: src/Doctr.Diagnostics/Doctr.Diagnostics.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
           VERSION_STATIC: 1.0.0
-          INCLUDE_SYMBOLS: true
+          INCLUDE_SYMBOLS: false
