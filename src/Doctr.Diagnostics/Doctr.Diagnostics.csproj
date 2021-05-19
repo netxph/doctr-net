@@ -6,8 +6,9 @@
 
     <PropertyGroup>
         <PackageId>Doctr.Diagnostics</PackageId>
-        <Authors>Doctr</Authors>
+        <Authors>netxph</Authors>
         <Company>Doctr</Company>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageTags>Trace;Debug;Console;Logging</PackageTags>
         <Description>Set of diagnostic and debugging tools for .NET core. Helpful for old-fashioned console Developers.</Description>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
