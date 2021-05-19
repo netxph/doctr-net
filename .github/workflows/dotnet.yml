@@ -24,13 +24,11 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build -c Release --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Package
+      run: dotnet pack --no-build -c Release src/Doctr.Diagnostics/Doctr.Diagnostics.csproj -o .
     - name: Publish
-      uses: brandedoutcast/publish-nuget@v2.5.2
-      with:
-          PROJECT_FILE_PATH: src/Doctr.Diagnostics/Doctr.Diagnostics.csproj
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-          VERSION_STATIC: 1.0.0
-          INCLUDE_SYMBOLS: false
+      run: dotnet nuget push *.nupkg -k ${{secrets.NUGET_API_KEY}} --skip-duplicate
+      
