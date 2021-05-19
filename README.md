@@ -6,6 +6,8 @@ Set of diagnostic tools for .NET core. Helpful for old-fashioned `Console.Writel
 * Trace/Debug logs to ILogger
 * Object Dump
 * Object Internal
+* First Chance Exception
+    * https://docs.microsoft.com/en-us/dotnet/framework/app-domains/how-to-receive-first-chance-exception-notifications
 * Current Line Info
     * Threads
     * StackTrace

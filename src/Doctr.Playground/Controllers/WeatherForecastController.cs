@@ -47,5 +47,38 @@ namespace Doctr.Playground.Controllers
 
             return forecast;
         }
+
+        [HttpGet("{date}")]
+        public WeatherForecast Get(DateTime date)
+        {
+            Trace.WriteLine(date);
+
+            if(date < DateTime.UtcNow)
+            {
+                using(new FirstChanceExceptionHandler())
+                {
+                    var simulator = new ErrorSimulator();
+
+                    simulator.SimulateError();
+                }
+            }
+
+            return new WeatherForecast()
+            {
+                Date = date,
+                     TemperatureC = 37,
+                     Summary = "Warm"
+            };
+        }
+    }
+
+    public class ErrorSimulator
+    {
+
+        public void SimulateError()
+        {
+            throw new Exception("Simple Error");
+        }
+
     }
 }
