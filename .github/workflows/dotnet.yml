@@ -3,12 +3,10 @@ name: NuGet
 on:
   push:
     branches:
-      - main
       - release/*
 
   pull_request:
     branches:
-      - main
       - release/*
 
 jobs:
@@ -33,7 +31,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Package
-      run: dotnet pack --no-build -c Release src/Doctr.Diagnostics/Doctr.Diagnostics.csproj -o .
+      run: dotnet pack /p:PublicRelease=true --no-build -c Release src/Doctr.Diagnostics/Doctr.Diagnostics.csproj -o .
     - name: Publish
       run: dotnet nuget push *.nupkg -k ${{secrets.NUGET_API_KEY}} --skip-duplicate -s ${{secrets.NUGET_SOURCE}}
       
