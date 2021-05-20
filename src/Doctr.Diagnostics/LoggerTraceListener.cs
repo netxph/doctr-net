@@ -1,7 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace Doctr.Diagnostics
@@ -52,23 +50,6 @@ namespace Doctr.Diagnostics
             }
 
             return method;
-        }
-
-    }
-
-    public static class TraceExtensions
-    {
-
-        public static void BindTrace(this IServiceProvider provider)
-        {
-             Trace.Listeners.Add(provider.GetRequiredService<LoggerTraceListener>());
-        }
-
-        public static IServiceCollection AddDoctr(this IServiceCollection services)
-        {
-            services.AddTransient<LoggerTraceListener>();
-
-            return services;
         }
 
     }
