@@ -28,6 +28,7 @@ namespace Doctr.Playground.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
             Trace.WriteLine("WeatherForecast - GET");
+            Debug.WriteLine("WeatherForecast (Debug) - GET");
 
             var rng = new Random();
 
