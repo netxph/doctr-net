@@ -40,6 +40,7 @@ namespace Doctr.Playground.Controllers
             })
             .ToArray();
 
+            Trace.WriteLine(forecast.FirstOrDefault().GetType().ReflectDump());
             Trace.WriteLine(forecast.Dump());
 
             var item = forecast.FirstOrDefault();
