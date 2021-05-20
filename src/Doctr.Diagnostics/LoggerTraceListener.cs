@@ -43,6 +43,8 @@ namespace Doctr.Diagnostics
 
             while(method.DeclaringType == typeof(LoggerTraceListener) ||
                     method.DeclaringType == typeof(Trace) ||
+                    method.DeclaringType == typeof(Debug) ||
+                    method.DeclaringType.Name.Equals("TraceProvider") ||
                     method.DeclaringType.Name.Equals("TraceInternal"))  
             {
                 depth++;
