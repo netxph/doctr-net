@@ -75,18 +75,6 @@ Trace.WriteLine(person.GetType().ReflectDump());
 Trace.WriteLine(typeof(Person).ReflectDump());
 ```
 
-
-
-## Planned Features
-
-* `AspNetCore` middleware
-  * Loaded Modules
-  * Recent Trace Logs
-* `try.dot.net` backdoor page.
-  * Allows you to run code scripts on a published server for maintenance and inspection
-
-
-
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
